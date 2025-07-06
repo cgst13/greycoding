@@ -166,31 +166,7 @@ function initPortfolioInteractions() {
         item.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-15px) scale(1.02)';
             this.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
-            
-            // Add shimmer effect
-            const shimmer = document.createElement('div');
-            shimmer.className = 'shimmer-effect';
-            shimmer.style.cssText = `
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-                transition: left 0.5s;
-                z-index: 1;
-            `;
-            this.appendChild(shimmer);
-            
-            setTimeout(() => {
-                shimmer.style.left = '100%';
-            }, 10);
-            
-            setTimeout(() => {
-                if (shimmer.parentNode) {
-                    shimmer.parentNode.removeChild(shimmer);
-                }
-            }, 500);
+            // Shimmer effect removed for debugging link issue
         });
         
         item.addEventListener('mouseleave', function() {
@@ -198,11 +174,16 @@ function initPortfolioInteractions() {
             this.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
         });
         
-        // Add click effect, but do not animate if clicking a link
+        // Add click effect, and open project page if not clicking a link
         item.addEventListener('click', function(e) {
             // If the click is on a link, do nothing (let the link work)
             if (e.target.tagName === 'A' || e.target.closest('a')) {
                 return;
+            }
+            // Find the link inside the card
+            const link = this.querySelector('a');
+            if (link) {
+                window.open(link.href, '_blank');
             }
             this.style.transform = 'scale(0.98)';
             setTimeout(() => {
