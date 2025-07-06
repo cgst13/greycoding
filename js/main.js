@@ -198,8 +198,12 @@ function initPortfolioInteractions() {
             this.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
         });
         
-        // Add click effect
-        item.addEventListener('click', function() {
+        // Add click effect, but do not animate if clicking a link
+        item.addEventListener('click', function(e) {
+            // If the click is on a link, do nothing (let the link work)
+            if (e.target.tagName === 'A' || e.target.closest('a')) {
+                return;
+            }
             this.style.transform = 'scale(0.98)';
             setTimeout(() => {
                 this.style.transform = 'translateY(-15px) scale(1.02)';
