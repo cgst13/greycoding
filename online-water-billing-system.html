@@ -70,25 +70,25 @@
         <div class="row g-4">
           <div class="col-12 col-md-6 col-lg-3 text-center">
             <a href="#" class="screenshot-link" data-img="img/project1/dashboard.png" data-caption="Figure: Water Billing System Dashboard (Overview)">
-              <img src="img/project1/dashboard.png" alt="Water Billing System Dashboard Screenshot" class="img-fluid rounded shadow">
+              <img src="img/project1/dashboard.png" alt="Water Billing System Dashboard Screenshot" class="img-fluid rounded shadow screenshot-img">
             </a>
             <div class="text-muted small mt-2">Figure: Water Billing System Dashboard (Overview)</div>
           </div>
           <div class="col-12 col-md-6 col-lg-3 text-center">
             <a href="#" class="screenshot-link" data-img="img/project1/create-bill.png" data-caption="Figure: Create New Bill Modal">
-              <img src="img/project1/create-bill.png" alt="Create New Bill Screenshot" class="img-fluid rounded shadow">
+              <img src="img/project1/create-bill.png" alt="Create New Bill Screenshot" class="img-fluid rounded shadow screenshot-img">
             </a>
             <div class="text-muted small mt-2">Figure: Create New Bill Modal</div>
           </div>
           <div class="col-12 col-md-6 col-lg-3 text-center">
             <a href="#" class="screenshot-link" data-img="img/project1/process-payment.png" data-caption="Figure: Process Bill Payment Modal">
-              <img src="img/project1/process-payment.png" alt="Process Bill Payment Screenshot" class="img-fluid rounded shadow">
+              <img src="img/project1/process-payment.png" alt="Process Bill Payment Screenshot" class="img-fluid rounded shadow screenshot-img">
             </a>
             <div class="text-muted small mt-2">Figure: Process Bill Payment Modal</div>
           </div>
           <div class="col-12 col-md-6 col-lg-3 text-center">
             <a href="#" class="screenshot-link" data-img="img/project1/user-management.png" data-caption="Figure: User Management Page">
-              <img src="img/project1/user-management.png" alt="User Management Screenshot" class="img-fluid rounded shadow">
+              <img src="img/project1/user-management.png" alt="User Management Screenshot" class="img-fluid rounded shadow screenshot-img">
             </a>
             <div class="text-muted small mt-2">Figure: User Management Page</div>
           </div>
@@ -105,7 +105,7 @@
             <button id="modalPrev" type="button" class="btn btn-light position-absolute top-50 start-0 translate-middle-y ms-2" style="z-index:2;opacity:0.85;" aria-label="Previous"><i class="fas fa-chevron-left fa-lg"></i></button>
             <!-- Next Button -->
             <button id="modalNext" type="button" class="btn btn-light position-absolute top-50 end-0 translate-middle-y me-2" style="z-index:2;opacity:0.85;" aria-label="Next"><i class="fas fa-chevron-right fa-lg"></i></button>
-            <img id="modalImage" src="" alt="Screenshot" class="img-fluid rounded shadow-lg animate-fade-in" style="display:block;margin:auto;max-height:80vh;">
+            <img id="modalImage" src="" alt="Screenshot" class="img-fluid rounded shadow-lg animate-fade-in screenshot-img" style="display:block;margin:auto;max-height:80vh;max-width:100%;">
             <div id="modalCaption" class="text-center text-white bg-dark bg-opacity-75 rounded-bottom py-2 px-3 mt-2 animate-fade-in"></div>
           </div>
         </div>
@@ -142,7 +142,9 @@
       }
     </style>
     <script>
+      // Screenshot Lightbox Modal Script
       document.addEventListener('DOMContentLoaded', function() {
+        // Share/copy logic (existing)
         var pageUrl = window.location.href;
         document.getElementById('fbShare').addEventListener('click', function(e) {
           e.preventDefault();
@@ -165,6 +167,67 @@
               setTimeout(function(){ copyMsg.style.display = 'none'; }, 1500);
             });
           });
+        }
+
+        // Screenshot modal logic
+        var screenshotLinks = Array.from(document.querySelectorAll('.screenshot-link'));
+        var modal = document.getElementById('screenshotModal');
+        var modalImage = document.getElementById('modalImage');
+        var modalCaption = document.getElementById('modalCaption');
+        var modalPrev = document.getElementById('modalPrev');
+        var modalNext = document.getElementById('modalNext');
+        var currentIndex = -1;
+
+        function showModal(index) {
+          if (index < 0 || index >= screenshotLinks.length) return;
+          var link = screenshotLinks[index];
+          var imgSrc = link.getAttribute('data-img');
+          var caption = link.getAttribute('data-caption') || '';
+          modalImage.src = imgSrc;
+          modalCaption.textContent = caption;
+          currentIndex = index;
+          var bsModal = bootstrap.Modal.getOrCreateInstance(modal);
+          bsModal.show();
+        }
+
+        screenshotLinks.forEach(function(link, idx) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal(idx);
+          });
+        });
+
+        modalPrev.addEventListener('click', function() {
+          if (currentIndex > 0) {
+            showModal(currentIndex - 1);
+          } else {
+            showModal(screenshotLinks.length - 1); // Loop to last
+          }
+        });
+        modalNext.addEventListener('click', function() {
+          if (currentIndex < screenshotLinks.length - 1) {
+            showModal(currentIndex + 1);
+          } else {
+            showModal(0); // Loop to first
+          }
+        });
+
+        // Keyboard navigation
+        modal.addEventListener('shown.bs.modal', function() {
+          document.addEventListener('keydown', handleKey);
+        });
+        modal.addEventListener('hidden.bs.modal', function() {
+          document.removeEventListener('keydown', handleKey);
+        });
+        function handleKey(e) {
+          if (e.key === 'ArrowLeft') {
+            modalPrev.click();
+          } else if (e.key === 'ArrowRight') {
+            modalNext.click();
+          } else if (e.key === 'Escape') {
+            var bsModal = bootstrap.Modal.getOrCreateInstance(modal);
+            bsModal.hide();
+          }
         }
       });
     </script>

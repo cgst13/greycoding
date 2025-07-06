@@ -874,3 +874,15 @@ footer {
     box-shadow: 0 20px 60px rgba(37,99,235,0.25), 0 4px 16px rgba(0,0,0,0.12);
     transform: scale(1.03) rotate(-2deg);
 }
+
+.screenshot-img {
+    max-width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+
+#modalImage {
+    max-width: 100%;
+}
