@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="400px" viewBox="0 0 600 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>IT Design Hero Image</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#0056B3" offset="0%"></stop>
+            <stop stop-color="#007BFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#E9ECEF" offset="0%"></stop>
+            <stop stop-color="#DEE2E6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="IT-Design-Hero" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Background" fill="#F8F9FA" x="0" y="0" width="600" height="400"></rect>
+        
+        <!-- Abstract Design Elements -->
+        <circle id="Circle-1" fill="url(#linearGradient-1)" opacity="0.1" cx="100" cy="100" r="80"></circle>
+        <circle id="Circle-2" fill="url(#linearGradient-1)" opacity="0.1" cx="500" cy="300" r="100"></circle>
+        
+        <!-- Computer/Device -->
+        <rect id="Monitor" fill="#FFFFFF" x="150" y="80" width="300" height="200" rx="10"></rect>
+        <rect id="Screen" fill="#F8F9FA" x="170" y="100" width="260" height="160" rx="5"></rect>
+        <rect id="Monitor-Stand" fill="#FFFFFF" x="270" y="280" width="60" height="20"></rect>
+        <rect id="Monitor-Base" fill="#FFFFFF" x="250" y="300" width="100" height="10" rx="5"></rect>
+        
+        <!-- UI Elements on Screen -->
+        <rect id="Header" fill="url(#linearGradient-1)" x="170" y="100" width="260" height="30" rx="5"></rect>
+        <circle id="Nav-1" fill="#FFFFFF" opacity="0.7" cx="190" cy="115" r="5"></circle>
+        <circle id="Nav-2" fill="#FFFFFF" opacity="0.7" cx="210" cy="115" r="5"></circle>
+        <circle id="Nav-3" fill="#FFFFFF" opacity="0.7" cx="230" cy="115" r="5"></circle>
+        
+        <!-- Content Blocks -->
+        <rect id="Sidebar" fill="url(#linearGradient-2)" x="170" y="140" width="60" height="120" rx="5"></rect>
+        <rect id="Content-1" fill="url(#linearGradient-2)" x="240" y="140" width="190" height="30" rx="5"></rect>
+        <rect id="Content-2" fill="url(#linearGradient-2)" x="240" y="180" width="190" height="30" rx="5"></rect>
+        <rect id="Content-3" fill="url(#linearGradient-2)" x="240" y="220" width="190" height="30" rx="5"></rect>
+        
+        <!-- Icons -->
+        <circle id="Icon-1" fill="url(#linearGradient-1)" cx="200" cy="160" r="10"></circle>
+        <circle id="Icon-2" fill="url(#linearGradient-1)" cx="200" cy="190" r="10"></circle>
+        <circle id="Icon-3" fill="url(#linearGradient-1)" cx="200" cy="220" r="10"></circle>
+        
+        <!-- Design Elements -->
+        <path d="M50,350 C80,320 120,380 150,350" id="Wave-1" stroke="url(#linearGradient-1)" stroke-width="3" opacity="0.5"></path>
+        <path d="M450,50 C480,20 520,80 550,50" id="Wave-2" stroke="url(#linearGradient-1)" stroke-width="3" opacity="0.5"></path>
+    </g>
+</svg>
