@@ -50,49 +50,18 @@
     <div class="container" style="margin-top: 100px;">
         <h1>Online Water Billing System</h1>
         <p>Developed and maintained an online water billing system for LGUs, enabling customer management, billing, and payment processing.</p>
-        <a href="index.html#portfolio" class="btn btn-primary mt-3"><i class="fas fa-arrow-left me-2"></i>Back to Portfolio</a>
-        <a href="https://script.google.com/macros/s/AKfycbwmgKv4zKopkan82V3SKbxTsabiETUr3I8o778WbrhVG4ft27xQ0hf1oehBCU-irP3A5g/exec" class="btn btn-success mt-3 ms-2" target="_blank" rel="noopener"><i class="fas fa-external-link-alt me-2"></i>Live Preview</a>
-    </div>
-    
-    <div class="container mt-4">
-      <div class="card p-3 shadow-sm">
-        <h5 class="mb-3"><i class="fas fa-share-alt me-2"></i>Share this project</h5>
-        <div class="d-flex gap-2">
-          <a class="btn btn-outline-primary" id="fbShare" href="javascript:void(0)" target="_blank" rel="noopener" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a class="btn btn-outline-info" id="twShare" href="javascript:void(0)" target="_blank" rel="noopener" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
-          <a class="btn btn-outline-primary" id="liShare" style="border-color:#0a66c2;color:#0a66c2;" href="javascript:void(0)" target="_blank" rel="noopener" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <button class="btn btn-outline-secondary" id="copyLinkBtn" title="Copy link"><i class="fas fa-link"></i></button>
+        <div class="d-flex flex-wrap align-items-center gap-2 mt-3">
+            <a href="index.html#portfolio" class="btn btn-primary"><i class="fas fa-arrow-left me-2"></i>Back to Portfolio</a>
+            <a href="https://script.google.com/macros/s/AKfycbwmgKv4zKopkan82V3SKbxTsabiETUr3I8o778WbrhVG4ft27xQ0hf1oehBCU-irP3A5g/exec" class="btn btn-success ms-2" target="_blank" rel="noopener"><i class="fas fa-external-link-alt me-2"></i>Live Preview</a>
+            <div class="d-flex gap-1 ms-2">
+                <a class="btn btn-outline-primary" id="fbShare" href="javascript:void(0)" target="_blank" rel="noopener" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-info" id="twShare" href="javascript:void(0)" target="_blank" rel="noopener" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-primary" id="liShare" style="border-color:#0a66c2;color:#0a66c2;" href="javascript:void(0)" target="_blank" rel="noopener" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <button class="btn btn-outline-secondary" id="copyLinkBtn" title="Copy link"><i class="fas fa-link"></i></button>
+            </div>
         </div>
         <div id="copyMsg" class="small text-success mt-2" style="display:none;">Link copied!</div>
-      </div>
     </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var pageUrl = window.location.href;
-        document.getElementById('fbShare').addEventListener('click', function(e) {
-          e.preventDefault();
-          window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl), '_blank', 'width=600,height=400');
-        });
-        document.getElementById('twShare').addEventListener('click', function(e) {
-          e.preventDefault();
-          window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(pageUrl), '_blank', 'width=600,height=400');
-        });
-        document.getElementById('liShare').addEventListener('click', function(e) {
-          e.preventDefault();
-          window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl), '_blank', 'width=600,height=400');
-        });
-        var copyBtn = document.getElementById('copyLinkBtn');
-        var copyMsg = document.getElementById('copyMsg');
-        if(copyBtn) {
-          copyBtn.addEventListener('click', function() {
-            navigator.clipboard.writeText(pageUrl).then(function() {
-              copyMsg.style.display = 'block';
-              setTimeout(function(){ copyMsg.style.display = 'none'; }, 1500);
-            });
-          });
-        }
-      });
-    </script>
     
     <!-- System Screenshots Section -->
     <div class="container my-5">
@@ -174,62 +143,32 @@
     </style>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        var screenshotLinks = document.querySelectorAll('.screenshot-link');
-        var modal = new bootstrap.Modal(document.getElementById('screenshotModal'));
-        var modalImg = document.getElementById('modalImage');
-        var modalCaption = document.getElementById('modalCaption');
-        var modalPrev = document.getElementById('modalPrev');
-        var modalNext = document.getElementById('modalNext');
-        var screenshots = Array.from(screenshotLinks).map(function(link) {
-          return {
-            img: link.getAttribute('data-img'),
-            caption: link.getAttribute('data-caption')
-          };
+        var pageUrl = window.location.href;
+        document.getElementById('fbShare').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl), '_blank', 'width=600,height=400');
         });
-        var currentIndex = 0;
-        function showModalAt(index) {
-          currentIndex = (index + screenshots.length) % screenshots.length;
-          modalImg.src = screenshots[currentIndex].img;
-          modalCaption.textContent = screenshots[currentIndex].caption;
-          modalImg.classList.remove('animate-fade-in');
-          modalCaption.classList.remove('animate-fade-in');
-          void modalImg.offsetWidth;
-          void modalCaption.offsetWidth;
-          modalImg.classList.add('animate-fade-in');
-          modalCaption.classList.add('animate-fade-in');
-        }
-        screenshotLinks.forEach(function(link, idx) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            showModalAt(idx);
-            modal.show();
+        document.getElementById('twShare').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(pageUrl), '_blank', 'width=600,height=400');
+        });
+        document.getElementById('liShare').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl), '_blank', 'width=600,height=400');
+        });
+        var copyBtn = document.getElementById('copyLinkBtn');
+        var copyMsg = document.getElementById('copyMsg');
+        if(copyBtn) {
+          copyBtn.addEventListener('click', function() {
+            navigator.clipboard.writeText(pageUrl).then(function() {
+              copyMsg.style.display = 'block';
+              setTimeout(function(){ copyMsg.style.display = 'none'; }, 1500);
+            });
           });
-        });
-        modalPrev.addEventListener('click', function() {
-          showModalAt(currentIndex - 1);
-        });
-        modalNext.addEventListener('click', function() {
-          showModalAt(currentIndex + 1);
-        });
-        document.getElementById('screenshotModal').addEventListener('hidden.bs.modal', function () {
-          modalImg.src = '';
-        });
-        // Optional: Keyboard navigation
-        document.getElementById('screenshotModal').addEventListener('shown.bs.modal', function () {
-          document.addEventListener('keydown', handleKeyNav);
-        });
-        document.getElementById('screenshotModal').addEventListener('hidden.bs.modal', function () {
-          document.removeEventListener('keydown', handleKeyNav);
-        });
-        function handleKeyNav(e) {
-          if (e.key === 'ArrowLeft') {
-            showModalAt(currentIndex - 1);
-          } else if (e.key === 'ArrowRight') {
-            showModalAt(currentIndex + 1);
-          }
         }
       });
     </script>
+    
     <!-- Documentation Section: Water Billing System -->
     <div class="container my-5">
       <div class="card shadow-lg p-4">
